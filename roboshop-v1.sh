@@ -34,11 +34,11 @@ do
             --query 'Reservations[].Instances[].PublicIpAddress' \
             --output text
             )
-            r53_record="$domain_name"
+            r53_record="{$domain_name}"
     fi
 
-    # update the record in route53
-    echo "record: $r53_record"
+    # update r53 record
+    echo "Record: ${r53_record}"
     aws route53 change-resource-record-sets \
         --hosted-zone-id $hosted_zone_id \
         --change-batch '{       
@@ -56,5 +56,5 @@ do
                 }
             ]
         }'
-    echo "Record updated in route53 for $instance"
+    echo "Updated R53 record for $instance"
 done
