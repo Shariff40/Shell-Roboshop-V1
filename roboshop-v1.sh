@@ -13,7 +13,7 @@ do
     --image-id $ami_id \
     --instance-type $instance_type \
     --security-group-ids "sg-002f8c095d7e0447d" "roboshop-$instance" \
-	--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=Roboshop-$instance}]" \
+	--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
 	--query 'Instances[0].InstanceId' \
 	--output text
     )
