@@ -10,7 +10,7 @@ do
     echo "Creating instance: $instance"
 
     instance_id=$(aws ec2 run-instances \
-    --image-id $ami_id_ami-0220d79f3f480ecf5 \
+    --image-id $ami_id \
     --instance-type $instance_type \
     --security-group-ids "sg-002f8c095d7e0447d" "roboshop-$instance" \
 	--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
