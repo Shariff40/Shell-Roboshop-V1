@@ -1,14 +1,14 @@
 #!/bin/bash
 
 user_id=$(id -u)
-logs_file="/var/log/Shell-Roboshop"
-logs_file="${logs_folder}/${0}.log"
-R=\e[31m"
-G=\e[32m"
-Y=\e[33m"
-N=\e[0m"
+logs_folder="/var/log/Shell-Roboshop"
+logs_file="${logs_folder}/$(basename "$0").log"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
-IF [ $user_id -ne 0 ]; then
+if [ "$user_id" -ne 0 ]; then
     echo "Please run this script with sudo access.."
     exit 1
 fi
@@ -27,12 +27,12 @@ validate() {
 }
 
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>>$logs_file
+cp mongo.repo /etc/yum.repos.d/mongo.repo
 validate $? "Adding mongo repo"
 
-dnf install mongodb-org -y &>>$logs_file
+dnf install mongodb-org -y
 validate $? "Install mongoDB"
 
-systemctl enable mongod &>>$logs_file
-systemctl start mongod &>>$logs_file
+systemctl enable mongod
+systemctl start mongod
 validate $? "Enable and start mongoDB"
