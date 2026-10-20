@@ -19,4 +19,7 @@ do
         )
 
     echo "$instance ID: $instance_id"
+    if [ $instance != "frontend" ]; then
+
+    else
 done
